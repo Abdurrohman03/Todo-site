@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <a href="{% url 'task:index' %}"><i class="bi bi-arrow-left-circle-fill"></i> Back to list</a>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="mb-3 row">
+                <label for="id_title" class="col-sm-2 col-form-label">{{ form.title.label }}: </label>
+                <div class="col-sm-10">
+                    {{ form.title }}
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="id_status" class="col-sm-2 col-form-label">{{ form.status.label }}: </label>
+                <div class="col-sm-10">
+                    {{ form.status }}
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="id_priority" class="col-sm-2 col-form-label">{{ form.priority.label }}: </label>
+                <div class="col-sm-10">
+                    {{ form.priority }}
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="id_description" class="col-sm-2 col-form-label">{{ form.description.label }}: </label>
+                <div class="col-sm-10">
+                    {{ form.description }}
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="id_deadline" class="col-sm-2 col-form-label">{{ form.deadline.label }}: </label>
+                <div class="col-sm-10">
+                    {{ form.deadline }}
+                </div>
+            </div>
+            <div>
+                <code>Created date: {{ obj.created_date }}</code>
+                <br>
+                <code>Modified date: {{ obj.modified_date }}</code>
+            </div>
+            <a href="{% url 'task:delete' obj.id %}" class="btn btn-danger">
+                Delete
+            </a>
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

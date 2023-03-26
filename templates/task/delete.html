@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row mt-3">
+    <form method="post">
+        {% csrf_token %}
+        <div class="alert alert-danger" role="alert">
+            Are you sure to delete "{{ obj.title }}" ?
+        </div>
+        <div class="button-group">
+            <a href="{% url 'task:edit' obj.id %}" class="btn btn-secondary">No, go back</a>
+            <button class="btn btn-danger" type="submit">Yes, I'm sure</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
